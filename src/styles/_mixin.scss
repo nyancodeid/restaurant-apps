@@ -1,0 +1,35 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$container-width: 1180px;
+
+@mixin breakpoint($breakpoint) {
+  @if $breakpoint == tablet {
+    @media screen and (min-width: $tablet-width) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet-max {
+    @media screen and (max-width: calc($tablet-width - 1px)) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media screen and (min-width: $desktop-width) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == container {
+    @media screen and (min-width: $container-width) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == container-max {
+    @media screen and (max-width: calc($container-width - 1px)) {
+      @content;
+    }
+  }
+}
