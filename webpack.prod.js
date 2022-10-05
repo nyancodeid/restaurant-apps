@@ -1,34 +1,45 @@
-const path = require("path");
-const common = require("./webpack.common");
-const { merge } = require("webpack-merge");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
-  mode: "production",
-  devtool: "source-map",
+  mode: 'production',
+  devtool: 'source-map',
   output: {
-    filename: "js/[name].[chunkhash:8].js",
-    chunkFilename: "js/[name].[chunkhash:8].chunk.js",
-    assetModuleFilename: "images/image.[hash:8][ext][query]",
-    path: path.resolve(__dirname, "dist"),
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
+    assetModuleFilename: 'images/image.[hash:8][ext][query]',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   optimization: {
     splitChunks: {
-      chunks: "all",
+      chunks: 'all',
     },
   },
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(scss|css)$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              postcssOptions: {
+                plugins: {
+                  autoprefixer: '',
+                },
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
           },
         ],
       },
@@ -37,9 +48,9 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["@babel/preset-env"],
+              presets: ['@babel/preset-env'],
             },
           },
         ],
@@ -48,8 +59,8 @@ module.exports = merge(common, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].[chunkhash:8].css",
-      chunkFilename: "css/[name].[chunkhash:8].chunk.js",
+      filename: 'css/[name].[chunkhash:8].css',
+      chunkFilename: 'css/[name].[chunkhash:8].chunk.js',
     }),
   ],
 });

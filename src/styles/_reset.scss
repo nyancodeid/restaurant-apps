@@ -14,10 +14,15 @@ a {
 button {
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 ul {
   padding-inline-start: 0;
   margin-block-start: 0;
   list-style: none;
+}
+
+input, textarea, button {
+  font-family: inherit;
 }

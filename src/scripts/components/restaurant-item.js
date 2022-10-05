@@ -1,14 +1,24 @@
-export default class RestauranItem extends HTMLElement {
+import api from '../config/api.config';
+import { createRatingTemplate } from '../views/templates/creator.template';
+
+class RestauranItem extends HTMLElement {
   set restaurant(data) {
+    this.pictureId = data.pictureId;
     this.render(data);
   }
 
-  render({ name, description, city, pictureId: thumbnail, rating }) {
+  get thumbnail() {
+    return api.picture(this.pictureId);
+  }
+
+  render({
+    id, name, description, city, rating,
+  }) {
     this.innerHTML = String.raw`
       <div class="restaurant_item__header">
         <img
           loading="lazy"
-          src="${thumbnail}"
+          src="${this.thumbnail}"
           alt="${name}"
         />
 
@@ -16,7 +26,7 @@ export default class RestauranItem extends HTMLElement {
       </div>
       <div class="restaurant_item__content">
         <div class="restaurant_title">
-          <a class="restaurant_item__title" href="">
+          <a class="restaurant_item__title" href="/#/detail/${id}">
             <h3>${name}</h3>
           </a>
 
@@ -25,7 +35,7 @@ export default class RestauranItem extends HTMLElement {
           </a>
         </div>
         <div class="restaurant_item__rating">
-          ${this.renderRating(rating)}
+          ${createRatingTemplate(rating)}
 
           <span class="badge" tabindex="0" aria-label="Restaurant rating is ${rating}">${rating}</span>
         </div>
@@ -35,19 +45,6 @@ export default class RestauranItem extends HTMLElement {
       </div>
     `;
   }
-
-  renderRating(rate) {
-    const filledStarCount = Math.round(rate);
-    const emptyStarCount = 5 - filledStarCount;
-
-    const filledStar = new Array(filledStarCount).fill(String.raw`
-      <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fec800" d="m12 17l-5.878 3.59l1.598-6.7l-5.23-4.48l6.865-.55L12 2.5l2.645 6.36l6.866.55l-5.231 4.48l1.598 6.7z"/></svg>
-    `);
-
-    const emptyStar = new Array(emptyStarCount).fill(String.raw`
-      <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fec800" d="m12 17l-5.878 3.59l1.598-6.7l-5.23-4.48l6.865-.55L12 2.5l2.645 6.36l6.866.55l-5.231 4.48l1.598 6.7L12 17zm0-2.344l2.817 1.72l-.766-3.21l2.507-2.147l-3.29-.264L12 7.708l-1.268 3.047l-3.29.264l2.507 2.147l-.766 3.21L12 14.657z"/></svg>
-    `);
-
-    return [...filledStar, ...emptyStar].join("");
-  }
 }
+
+export default RestauranItem;

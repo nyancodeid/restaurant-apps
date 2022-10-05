@@ -17,15 +17,15 @@
           <h1>Kal<b>Apps</b></h1>
         </a>
 
-        <div id="menu" class="nav_menu" data-target=".nav_list">
-          <button class="touch__target" aria-label="Open navigation menu">
+        <div class="nav_menu">
+          <button id="nav-trigger" class="touch__target" aria-label="Open navigation menu">
             ☰
           </button>
         </div>
 
-        <ul class="nav_list">
+        <ul id="nav-drawer" class="nav_list">
           <li class="nav_list__item"><a href="">Home</a></li>
-          <li class="nav_list__item"><a href="#">Favorite</a></li>
+          <li class="nav_list__item"><a href="/#/favorite">Favorite</a></li>
           <li class="nav_list__item">
             <a target="_blank" href="https://github.com/nyancodeid">About Us</a>
           </li>
@@ -83,100 +83,11 @@
         </section>
       </section>
 
-      <section class="restaurant">
-        <div class="wrapper_container">
-          <div class="restaurant_header">
-            <h2>Explore Restaurant</h2>
-            <p>Find the best restaurants only on the best websites.</p>
-          </div>
-
-          <div class="restaurant_contents">
-            <p class="restaurant_count">Menampilkan 20 restoran</p>
-            <div class="restaurant_lists"></div>
-            <div class="restaurant__empty_result">
-              <span>(&gt;_&lt;)</span>
-              <span>Can't find any restaurants.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="testimonial">
-        <div class="testimonial_header">
-          <h2>What Our Customer Say</h2>
-          <p>What do they say about us. We keep trying to do the best.</p>
-        </div>
-        <div class="testimonial_content">
-          <article>
-            <q
-              >With this website, I know where the restaurant with the best food
-              is in my city.</q
-            >
-            <span class="testimonial_author">- John Doe</span>
-          </article>
-
-          <article>
-            <q
-              >Thanks to KalApps, we don't have to bother to decide which
-              restaurant we should visit on the weekends.</q
-            >
-            <span class="testimonial_author">- Temannya John Doe</span>
-          </article>
-
-          <article>
-            <q
-              >Wow, how easy it is to use this app. With the search feature
-              everything is so easy.</q
-            >
-            <span class="testimonial_author">- Saudaranya John Doe</span>
-          </article>
-        </div>
-      </section>
+      <section id="main-content"></section>
     </main>
 
     <footer>
-      <section class="footer_content">
-        <div class="wrapper_container">
-          <div class="footer_brand">
-            <h2>Kal<b>Apps</b></h2>
-
-            <div class="footer_download">
-              <a href="#">
-                <img
-                  src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/783bb4a82e5be29e.svg"
-                  alt="Download on the App Store"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/163bdc9b0f1e7c9e.png"
-                  alt="Get it on Google Play Store"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="footer_navigation">
-            <ul>
-              <li><a href="#">Get Help</a></li>
-              <li><a href="#">Buy gift cards</a></li>
-              <li><a href="#">Add your restaurant</a></li>
-              <li><a href="#">Promotions</a></li>
-            </ul>
-          </div>
-          <div class="footer_navigation">
-            <ul>
-              <li><a href="#">Restaurant near me</a></li>
-              <li><a href="#">View all cities</a></li>
-              <li><a href="#">View all countries</a></li>
-              <li><a href="#">About KalApps</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="footer_note">
-        <span>Copyright &copy; 2022 - KalApps - Ryan Aunur Rassyid</span>
-      </section>
+      <footer-section></footer-section>
     </footer>
   </body>
 </html>

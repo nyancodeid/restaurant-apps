@@ -1,0 +1,51 @@
+section.testimonial {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5em;
+  margin-bottom: 6em;
+
+  .testimonial_header {
+    text-align: center;
+
+    h2 {
+      color: $dark-color;
+    }
+  }
+  .testimonial_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5em;
+
+    article {
+      text-align: center;
+      padding: 1.5em 0;
+      width: 100%;
+
+      q {
+        font-size: 2em;
+        color: darken($dark-color, 10%);
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+      }
+      .testimonial_author {
+        display: block;
+        margin-top: 1em;
+        font-size: 1.1rem;
+        color: lighten($dark-color, 10%);
+      }
+
+      @include breakpoint(tablet) {
+        & {
+          width: calc(50% - 1.5em);
+        }
+      }
+      @include breakpoint(desktop) {
+        & {
+          width: calc((100% / 3) - 1.5em);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,307 @@
+section.restaurant-detail {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 16px;
+
+  .skeleton-loading {
+    width: 100%;
+  }
+
+  .error__empty_result {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+    text-align: center;
+    color: $dark-color;
+    padding: 2em 0;
+
+    span {
+      font-size: 1.3em;
+
+      &:first-child {
+        font-size: 10em;
+      }
+    }
+  }
+
+  .detail_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .detail_content__media {
+      img {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+    .detail_content__description {
+      width: 100%;
+
+      h3 {
+        margin-top: 0;
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .description_meta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 3em;
+
+        .rating {
+          color: #fec800;
+          font-size: 16px;
+          margin-right: 8px;
+        }
+      }
+      .description_detail {
+        p {
+          span {
+            color: #616161;
+          }
+        }
+      }
+
+      #favorite-button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+
+        width: 188px;
+        padding: 12px 24px;
+        font-size: 1.05rem;
+        border-radius: 6px;
+        border: 2px solid darken($color: $mid-color, $amount: 15%);
+        background-color: white;
+        color: darken($color: $mid-color, $amount: 20%);
+
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+
+        &.favorited {
+          background-color: darken($color: $mid-color, $amount: 15%);
+          color: $light-color;
+        }
+        &:not(.favorited):hover {
+          background-color: lighten($color: $mid-color, $amount: 40%);
+        }
+        &.favorited:hover {
+          background-color: darken($color: $mid-color, $amount: 20%);
+          color: $light-color;
+        }
+      }
+    }
+
+    @include breakpoint(tablet) {
+      & {
+        flex-direction: row;
+        gap: 3em;
+
+        .detail_content__media {
+          img {
+            width: 318px;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(desktop) {
+      .detail_content__media {
+        img {
+          width: 512px;
+        }
+      }
+    }
+  }
+
+  .detail_description {
+    h5 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      text-indent: 50px;
+      text-align: justify;
+    }
+  }
+
+  .detail_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    .menu__food,
+    .menu__drink {
+      width: 100%;
+
+      h5 {
+        font-size: 1.1rem;
+      }
+
+      ul {
+        columns: 2;
+        column-gap: 1em;
+        margin-inline-start: 18px;
+
+        li {
+          margin-bottom: 8px;
+          list-style: circle;
+        }
+      }
+    }
+  }
+
+  .detail_review {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    .review__aside {
+      flex-basis: 20%;
+      text-align: center;
+
+      .review__rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0;
+        width: 100%;
+        margin-top: 1.33em;
+
+        .rating {
+          color: #fec800;
+          font-size: 24px;
+          margin-right: 8px;
+        }
+        .rating_count {
+          font-size: 60px;
+        }
+        .rating_count__max {
+          font-size: 16px;
+          color: #6d7588;
+        }
+      }
+      .review_count__customer {
+        font-size: 12px;
+        color: #616161;
+      }
+    }
+    .review__list {
+      flex-basis: 80%;
+
+      .review__form {
+        display: flex;
+
+        iconify-icon {
+          font-size: 32px;
+          margin: 0 1em;
+        }
+
+        .review__form_content {
+          display: flex;
+          flex-direction: column;
+          gap: 1em;
+          flex: 1 1 0%;
+
+          .form_content__group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            input, textarea {
+              font-family: 'Open Sans', sans-serif;
+              background-color: #fff9f4;
+
+              border: none;
+              border-bottom: 2px solid $mid-color;
+              
+              outline: none;
+              font-size: 14px;
+              padding: 12px;
+            }
+          }
+          .form_content__action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+              background-color: #704623;
+              color: white;
+              padding: 12px 16px;
+              border-radius: 3px;
+              font-size: 15px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .review_lists {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        review-item:not(:last-child) {
+          border-bottom: 1px solid #dddddd;
+        }
+
+        .review__item {
+          display: flex;
+          align-items: flex-start;
+          column-gap: 1em;
+
+          .review__item_avatar {
+            width: 48px;
+          }
+          .review__item_content {
+            display: flex;
+            flex-direction: column;
+
+            .review__item_name {
+              font-weight: bold;
+              margin-bottom: 4px;
+            }
+            .review__item_date {
+              font-size: 13px;
+              color: #616161;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(tablet) {
+    & {    
+      padding: 2em 16px;
+
+      .detail_description p {
+        text-align: unset;
+      }
+      .detail_menu {
+        flex-direction: row;
+        .menu__food,
+        .menu__drink {
+          width: 50%;
+        }
+      }
+    }
+  }
+  @include breakpoint(desktop) {
+    & {
+      padding: 3em 0;
+
+      .detail_review {
+        flex-direction: row;
+      }
+    }
+  }
+}

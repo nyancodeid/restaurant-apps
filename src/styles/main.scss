@@ -1,7 +1,7 @@
-@import "mixin.scss";
-@import "reset.scss";
+@import 'mixin.scss';
+@import 'reset.scss';
 
-@import url("https://fontbit.io/css2?family=Open+Sans:wght@300;500&display=swap");
+@import url('https://fontbit.io/css2?family=Open+Sans:wght@300;500&display=swap');
 
 $brand-color: #d9a404;
 $dark-color: #401e21;
@@ -15,7 +15,7 @@ $nav-height: 64px;
 }
 
 html {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   line-height: 1.15;
   letter-spacing: 0.5px;
@@ -38,101 +38,7 @@ body {
 }
 
 header {
-  nav {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: $nav-height;
-    padding: 0 1.5em;
-
-    @include breakpoint(container) {
-      & {
-        padding: 0;
-      }
-    }
-
-    &,
-    a {
-      color: $dark-color;
-    }
-    .nav_brand h1 {
-      font-size: 1.4em;
-      font-weight: 700;
-      color: $dark-color;
-      margin: 0;
-      padding: 11px 0;
-
-      b {
-        color: $brand-color;
-      }
-    }
-    .nav_menu {
-      font-size: 1.5em;
-      font-weight: 700;
-      user-select: none;
-      cursor: pointer;
-
-      button {
-        background-color: unset;
-      }
-    }
-    .nav_list {
-      margin: 0;
-      list-style: none;
-      transform: translateY(-10px);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      position: absolute;
-      top: (-$nav-height);
-
-      @include breakpoint(tablet-max) {
-        &.nav_list__open {
-          display: flex;
-          flex-direction: column;
-          z-index: 1;
-          width: 100%;
-          top: $nav-height;
-          left: 0;
-          background-color: lighten($brand-color, 10%);
-          transform: translateY(-1px);
-
-          a {
-            display: block;
-            padding: 16px 32px;
-            font-size: 16px;
-
-            &:hover {
-              background-color: lighten($brand-color, 5%);
-            }
-          }
-        }
-      }
-    }
-
-    @include breakpoint(tablet) {
-      .nav_menu {
-        display: none;
-      }
-      .nav_list {
-        display: flex;
-        position: unset;
-        top: unset;
-        transform: unset;
-        transition: unset;
-
-        a {
-          display: block;
-          height: $nav-height;
-          line-height: $nav-height;
-          padding: 0 16px;
-
-          &:hover {
-            background-color: #ffe5cc;
-          }
-        }
-      }
-    }
-  }
+  @import 'components/nav/nav';
 }
 
 main {
@@ -140,320 +46,21 @@ main {
   flex-direction: column;
   gap: 6em;
 
-  section.hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 347px;
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 5, 0.5), rgba(0, 0, 5, 0.5)),
-      url("../public/images/heros/hero-image_4.jpg") center no-repeat;
-    background-size: cover;
-
-    color: #fff;
-    text-shadow: 1px 1px $dark-color;
-
-    .hero_inner {
-      .hero_title {
-        font-size: 3em;
-        margin-bottom: 0.5em;
-      }
-      .hero_subtitle {
-        padding: 0 16px;
-        font-size: 1.6em;
-      }
-
-      @include breakpoint(tablet) {
-        .hero_title {
-          font-size: 3.5em;
-        }
-        .hero_subtitle {
-          font-size: 1.8em;
-        }
-      }
-
-      @include breakpoint(desktop) {
-        .hero_title {
-          font-size: 4em;
-        }
-        .hero_subtitle {
-          font-size: 2em;
-        }
-      }
-    }
-
-    .search_widget__wrapper {
-      position: absolute;
-      bottom: calc(($nav-height / 2) * -1);
-      left: 0;
-      width: 100%;
-
-      .wrapper_container {
-        padding: 0 1.5em;
-
-        @include breakpoint(container) {
-          & {
-            padding: 0;
-          }
-        }
-      }
-
-      .search_widget__inner {
-        display: flex;
-        align-items: center;
-        background-color: lighten($color: $light-color, $amount: 10%);
-        border-radius: 8px;
-        box-shadow: rgb(0 0 0 / 12%) 0px 1px 6px 0px;
-        padding-left: 24px;
-        padding-right: 8px;
-        height: $nav-height;
-
-        .search_widget__input {
-          font-family: "Open Sans", sans-serif;
-          flex: 1 1 0%;
-          outline: none;
-          border: none;
-          font-size: 16px;
-          padding: 11px 0;
-        }
-
-        .search_widget__clear {
-          display: none;
-
-          &.active {
-            display: block;
-          }
-        }
-
-        .search_widget__action,
-        .search_widget__clear {
-          background-color: transparent;
-          cursor: pointer;
-
-          path {
-            fill: $dark-color;
-          }
-        }
-
-        .search_widget__input:focus-visible,
-        .search_widget__clear:focus-visible,
-        .search_widget__action:focus-visible {
-          border: 2px solid $dark-color;
-          border-radius: 8px;
-        }
-      }
-    }
-  }
-
-  section.restaurant {
-    text-align: center;
-
-    .wrapper_container {
-      display: flex;
-      flex-direction: column;
-      padding: 1.5em;
-
-      @include breakpoint(container) {
-        & {
-          padding: 0;
-        }
-      }
-    }
-    .restaurant_header h2 {
-      color: $dark-color;
-    }
-    .restaurant_contents {
-      text-align: left;
-      width: 100%;
-
-      > p {
-        color: rgba(49, 53, 59, 0.96);
-      }
-
-      .restaurant_lists {
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        gap: 1.5em;
-
-        restaurant-item {
-          position: relative;
-          background-color: white;
-          box-shadow: rgb(0 0 0 / 12%) 0px 1px 6px 0px;
-          border-radius: 9px;
-
-          .badge {
-            border-radius: 8px;
-            padding: 6px 8px;
-            font-size: 12px;
-            font-weight: bold;
-          }
-
-          .restaurant_item__header {
-            img {
-              width: 100%;
-              height: 200px;
-              object-fit: cover;
-              object-position: center;
-              border-radius: 9px;
-            }
-
-            .badge {
-              position: absolute;
-              top: 8px;
-              left: 8px;
-
-              background-color: #c9fde0;
-              color: #00aa5b;
-            }
-          }
-          .restaurant_item__content {
-            padding: 16px;
-            padding-top: 8px;
-
-            .restaurant_title {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-
-              .restaurant_item__title h3 {
-                color: $dark-color;
-                font-size: 1.2em;
-                font-weight: 700;
-                margin: 0;
-                height: 44px;
-                line-height: 44px;
-              }
-            }
-
-            .restaurant_item__rating {
-              display: flex;
-              gap: -4px;
-              align-items: center;
-
-              svg {
-                width: 18px;
-                height: 18px;
-              }
-
-              .badge {
-                margin-left: 8px;
-                background-color: #fff5cf;
-                color: #f9a825;
-              }
-            }
-
-            p {
-              font-size: 14px;
-              line-height: 1.5;
-              color: rgba(49, 53, 59, 0.96);
-              text-overflow: ellipsis;
-              overflow: hidden;
-              display: -webkit-box;
-              -webkit-box-orient: vertical;
-              -webkit-line-clamp: 4;
-
-              @include breakpoint(desktop) {
-                & {
-                  font-size: 13px;
-                  -webkit-line-clamp: 3;
-                }
-              }
-            }
-          }
-        }
-
-        @include breakpoint(tablet) {
-          & {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        @include breakpoint(desktop) {
-          & {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-        }
-      }
-      .restaurant__empty_result {
-        display: none;
-
-        &.active {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5em;
-          width: 100%;
-          text-align: center;
-          color: $dark-color;
-          padding: 2em 0;
-
-          span {
-            font-size: 1.3em;
-
-            &:first-child {
-              font-size: 10em;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  section.testimonial {
+  #main-content {
     display: flex;
     flex-direction: column;
-    padding: 0 1.5em;
-
-    .testimonial_header {
-      text-align: center;
-
-      h2 {
-        color: $dark-color;
-      }
-    }
-    .testimonial_content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5em;
-
-      article {
-        text-align: center;
-        padding: 1.5em 0;
-        width: 100%;
-
-        q {
-          font-size: 2em;
-          color: darken($dark-color, 10%);
-          display: block;
-          width: 90%;
-          margin: 0 auto;
-        }
-        .testimonial_author {
-          display: block;
-          margin-top: 1em;
-          font-size: 1.1rem;
-          color: lighten($dark-color, 10%);
-        }
-
-        @include breakpoint(tablet) {
-          & {
-            width: calc(50% - 1.5em);
-          }
-        }
-        @include breakpoint(desktop) {
-          & {
-            width: calc((100% / 3) - 1.5em);
-          }
-        }
-      }
-    }
+    gap: 6em;
   }
+
+  @import 'components/hero/hero';
+
+  @import 'components/restaurant/lists';
+  @import 'components/restaurant/detail';
+  
+  @import 'components/testimonial/testimonial';
 }
 
 footer {
-  margin-top: 8em;
-
   .footer_content {
     padding: 3em 0;
     background-color: #ffe6d0;
