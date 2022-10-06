@@ -1,5 +1,5 @@
 import api from '../config/api.config';
-import ErrorHandling from '../utils/error.handling';
+import ToastHelpers from '../utils/toast.helpers';
 import ErrorMessage from '../utils/error.message';
 
 class RestaurantProvider {
@@ -12,7 +12,7 @@ class RestaurantProvider {
 
       return responseJson.restaurants;
     } catch (err) {
-      ErrorHandling
+      ToastHelpers
         .withError(err)
         .error(ErrorMessage.ERR_GET_DATA('restaurants'));
 
@@ -29,7 +29,7 @@ class RestaurantProvider {
 
       return responseJson.restaurants;
     } catch (err) {
-      ErrorHandling
+      ToastHelpers
         .withError(err)
         .error(ErrorMessage.ERR_GET_DATA('restaurants'));
 
@@ -46,7 +46,7 @@ class RestaurantProvider {
 
       return responseJson.restaurant;
     } catch (err) {
-      ErrorHandling
+      ToastHelpers
         .withError(err)
         .error(ErrorMessage.ERR_GET_DATA('restaurant detail'));
 
@@ -71,9 +71,11 @@ class RestaurantProvider {
 
       const responseJson = await response.json();
 
+      ToastHelpers.success('Thank you. Your review has been successfully recorded.');
+
       return responseJson.customerReviews;
     } catch (err) {
-      ErrorHandling
+      ToastHelpers
         .withError(err)
         .error(ErrorMessage.ERR_POST_DATA('review'));
 

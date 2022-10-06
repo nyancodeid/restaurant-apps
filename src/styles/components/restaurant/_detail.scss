@@ -15,13 +15,19 @@ section.restaurant-detail {
     width: 100%;
     text-align: center;
     color: $dark-color;
-    padding: 2em 0;
+    padding: 6em 0;
 
     span {
       font-size: 1.3em;
 
       &:first-child {
-        font-size: 10em;
+        font-size: 6em;
+
+        @include breakpoint(tablet) {
+          & {
+            font-size: 10em;
+          }
+        }
       }
     }
   }
@@ -44,6 +50,7 @@ section.restaurant-detail {
         margin-top: 0;
         font-size: 2rem;
         margin-bottom: 16px;
+        display: inline-block;
       }
 
       .description_meta {
@@ -71,7 +78,6 @@ section.restaurant-detail {
         justify-content: flex-start;
         gap: 8px;
 
-        width: 188px;
         padding: 12px 24px;
         font-size: 1.05rem;
         border-radius: 6px;
@@ -83,6 +89,9 @@ section.restaurant-detail {
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 300ms;
 
+        &:focus-visible {
+          @include button-focus;
+        }
         &.favorited {
           background-color: darken($color: $mid-color, $amount: 15%);
           color: $light-color;
@@ -104,7 +113,7 @@ section.restaurant-detail {
 
         .detail_content__media {
           img {
-            width: 318px;
+            width: 384px;
           }
         }
       }
@@ -129,6 +138,10 @@ section.restaurant-detail {
       line-height: 1.7;
       text-indent: 50px;
       text-align: justify;
+      hyphens: auto;
+      word-spacing: -0.05em;
+
+      color: darken($dark-color, 5%);
     }
   }
 
@@ -232,6 +245,22 @@ section.restaurant-detail {
             justify-content: space-between;
             align-items: center;
 
+            .action_left {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+
+              .form_action__loading {
+                display: none;
+                
+                &.active {
+                  display: block;
+                  width: 24px;
+                  height: 24px;
+                }
+              }
+            }
+
             button {
               background-color: #704623;
               color: white;
@@ -239,6 +268,10 @@ section.restaurant-detail {
               border-radius: 3px;
               font-size: 15px;
               text-transform: uppercase;
+
+              &:focus-visible {
+                @include button-focus;
+              }
             }
           }
         }
@@ -301,6 +334,9 @@ section.restaurant-detail {
 
       .detail_review {
         flex-direction: row;
+      }
+      .error__empty_result {
+        padding: 8em 0;
       }
     }
   }

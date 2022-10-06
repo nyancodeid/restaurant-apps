@@ -12,7 +12,7 @@ class FavoriteRestaurants {
           </div>
 
           <div class="restaurant_contents">
-            <p class="restaurant_count">Menampilkan 20 restoran</p>
+            <p class="restaurant_count">Showing 0 items out of 0 total</p>
             <div class="restaurant_lists"></div>
             <div class="restaurant__empty_result">
               <random-emoji></random-emoji>
@@ -26,6 +26,7 @@ class FavoriteRestaurants {
 
   async afterRender() {
     this._hideHero();
+    this._scrollToTop();
 
     const countElement = document.querySelector('section.restaurant .restaurant_count');
     const container = document.querySelector('section.restaurant .restaurant_lists');
@@ -53,6 +54,11 @@ class FavoriteRestaurants {
     const heroElement = document.querySelector('section.hero');
 
     heroElement.classList.add('hidden');
+  }
+
+  _scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 }
 

@@ -1,6 +1,6 @@
 import { Notyf } from 'notyf';
 
-class ErrorHandling {
+class ToastHelpers {
   constructor() {
     this.notyf = new Notyf({
       duration: 3000,
@@ -8,6 +8,12 @@ class ErrorHandling {
         x: 'center',
         y: 'bottom',
       },
+      types: [
+        {
+          type: 'info',
+          background: '#0da8ee',
+        },
+      ],
     });
 
     window.notyf = this.notyf;
@@ -16,6 +22,18 @@ class ErrorHandling {
   withError(error) {
     this.errorDetail = error;
     return this;
+  }
+
+  success(message) {
+    this.notyf.success(message);
+  }
+
+  info(message) {
+    this.notyf.open({
+      type: 'info',
+      duration: 4000,
+      message,
+    });
   }
 
   error(message = 'Something wrong, please try again later.') {
@@ -29,4 +47,4 @@ class ErrorHandling {
   }
 }
 
-export default new ErrorHandling();
+export default new ToastHelpers();

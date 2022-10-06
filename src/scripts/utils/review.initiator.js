@@ -14,10 +14,10 @@ class ReviewSubmitInitator {
   async _onSubmitReview(event) {
     event.preventDefault();
 
-    const data = new FormData(event.target);
+    this._toggleLoadingState();
 
-    const name = data.get('name');
-    const review = data.get('review');
+    const form = event.target;
+    const { name, review } = this._extractFormData(form);
 
     const customerReviews = await RestaurantProvider.postReview({
       id: this.restaurantId,
@@ -25,7 +25,28 @@ class ReviewSubmitInitator {
       review,
     });
 
+    form.reset();
+    this._toggleLoadingState();
+
     this.onSuccess(customerReviews);
+  }
+
+  _extractFormData(form) {
+    const data = new FormData(form);
+
+    const name = data.get('name') || '';
+    const review = data.get('review') || '';
+
+    return {
+      name,
+      review,
+    };
+  }
+
+  _toggleLoadingState() {
+    const loadingElement = document.querySelector('.form_action__loading');
+
+    loadingElement.classList.toggle('active');
   }
 }
 

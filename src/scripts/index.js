@@ -4,19 +4,21 @@ import '../styles/main.scss';
 import 'notyf/notyf.min.css';
 
 import App from './views/app';
+import ServiceWorker from './utils/sw.register';
 
 const app = new App({
   button: document.querySelector('#nav-trigger'),
   drawer: document.querySelector('#nav-drawer'),
-  content: document.querySelector('#main-content'),
+  content: document.querySelector('#content'),
+  skipLink: document.querySelector('#skip-link'),
 });
 
 window.addEventListener('hashchange', () => {
   app.renderPage();
 });
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   app.renderPage();
-});
 
-if (module && module.hot) module.hot.accept();
+  ServiceWorker.register();
+});

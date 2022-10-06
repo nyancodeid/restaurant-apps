@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  background-color: $light-color;
+  background-color: #fffcfa;
 }
 
 .wrapper_container {
@@ -38,6 +38,13 @@ body {
 }
 
 header {
+  background-color: $light-color;
+  border-bottom: 1px solid $mid-color;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 6px 0px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
   @import 'components/nav/nav';
 }
 
@@ -45,6 +52,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 6em;
+
+  &:focus-visible {
+    outline: none;
+  }
 
   #main-content {
     display: flex;
@@ -170,7 +181,7 @@ footer {
   }
 }
 
-.skip_link {
+#skip-link {
   position: absolute;
   top: -100px;
   left: 0;
@@ -180,6 +191,8 @@ footer {
   font-size: 15px;
   z-index: 100;
   text-decoration: none;
+  border: 2px solid $dark-color;
+  border-radius: 6px;
 
   &:focus-visible {
     top: calc($nav-height + 1.5em);

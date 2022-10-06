@@ -15,6 +15,7 @@ class DetailRestaurant {
 
   async afterRender() {
     this._hideHero();
+    this._scrollToTop();
 
     const content = document.querySelector('section.restaurant-detail > .wrapper_container');
     content.innerHTML = createRestaurantDetailLoadingTemplate();
@@ -60,9 +61,14 @@ class DetailRestaurant {
     content.innerHTML = String.raw`
       <div class="error__empty_result">
         <random-emoji></random-emoji>
-        <span>Opss! can't display any restaurant data.</span>
+        <span>Whopss! can't display any restaurant data.</span>
       </div>
     `;
+  }
+
+  _scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   _reviewInitialize(restaurantId) {
@@ -77,7 +83,10 @@ class DetailRestaurant {
 
   _renderCustomerReviews({ reviews }) {
     const reviewLists = document.querySelector('.review_lists');
-    reviewLists.innerHTML = '';
+
+    if (reviews.length > 0) {
+      reviewLists.innerHTML = '';
+    }
 
     reviews.forEach((review) => {
       const reviewItem = document.createElement('review-item');

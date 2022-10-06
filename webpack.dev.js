@@ -1,6 +1,5 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
-const webpack = require('webpack');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -8,7 +7,6 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     static: path.resolve(__dirname, 'dist'),
-    hot: true,
     open: true,
     port: 5000,
     client: {
@@ -37,7 +35,4 @@ module.exports = merge(common, {
       },
     ],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
 });

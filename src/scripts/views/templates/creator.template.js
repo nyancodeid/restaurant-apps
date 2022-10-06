@@ -2,6 +2,7 @@ import api from '../../config/api.config';
 
 import RestaurantsLoading from '../../../public/images/restaurants-loading.svg';
 import RestaurantDetailLoading from '../../../public/images/detail-loading.svg';
+import SpinnerLoadingState from '../../../public/images/spinner.webp';
 
 export const createMenuItemListTemplate = (items) => items.map((item) => `<li><span tabindex="0">${item.name}</span></li>`).join('');
 
@@ -12,20 +13,20 @@ export const createRestaurantDetailTemplate = (restaurant) => {
         <img src="${api.picture(restaurant.pictureId, 'medium')}" alt="${restaurant.name}">
       </div>
       <div class="detail_content__description">
-        <h3>${restaurant.name}</h3>
+        <h3 tabindex="0">${restaurant.name}</h3>
 
         <div class="description_meta">
-          <iconify-icon class="rating" icon="ri:star-fill"></iconify-icon> ${restaurant.rating.toFixed(1)} (${restaurant.customerReviews.length} review) · Kota ${restaurant.city}
+          <iconify-icon class="rating" icon="ri:star-fill"></iconify-icon> <span tabindex="0" aria-label="Restaurant Rating is ${restaurant.rating}">${restaurant.rating.toFixed(1)}</span>&nbsp;(${restaurant.customerReviews.length} review) · <span tabindex="0">Kota ${restaurant.city}</span>
         </div>
 
         <div class="description_detail">
-          <p><iconify-icon icon="ri:map-pin-2-line"></iconify-icon> <span>Address :</span> ${restaurant.address}, ${restaurant.city}</p>
+          <p tabindex="0"><iconify-icon icon="ri:map-pin-2-line"></iconify-icon> <span>Address :</span> ${restaurant.address}, ${restaurant.city}</p>
 
-          <p><iconify-icon icon="ri:bookmark-line"></iconify-icon> <span>Categories :</span> ${restaurant.categories.map((category) => category.name).join(', ')}</p>
+          <p tabindex="0"><iconify-icon icon="ri:bookmark-line"></iconify-icon> <span>Categories :</span> ${restaurant.categories.map((category) => category.name).join(', ')}</p>
 
-          <p><iconify-icon icon="fluent:food-24-filled"></iconify-icon> <span>Food Menu :</span> ${restaurant.menus.foods.length} item</p>
+          <p tabindex="0"><iconify-icon icon="fluent:food-24-filled"></iconify-icon> <span>Food Menu :</span> ${restaurant.menus.foods.length} item</p>
 
-          <p><iconify-icon icon="material-symbols:emoji-food-beverage"></iconify-icon> <span>Drinks Menu :</span> ${restaurant.menus.drinks.length} item</p>
+          <p tabindex="0"><iconify-icon icon="material-symbols:emoji-food-beverage"></iconify-icon> <span>Drinks Menu :</span> ${restaurant.menus.drinks.length} item</p>
         </div>
 
         <div class="description_actions"></div>
@@ -43,14 +44,14 @@ export const createRestaurantDetailTemplate = (restaurant) => {
   const menu = String.raw`
     <div class="detail_menu">
       <div class="menu__food">
-        <h5><iconify-icon icon="fluent:food-24-filled"></iconify-icon> Food</h5>
+        <h5><iconify-icon icon="fluent:food-24-filled"></iconify-icon> <span tabindex="0">Food</span></h5>
 
         <ul>
           ${createMenuItemListTemplate(restaurant.menus.foods)}
         </ul>
       </div>
       <div class="menu__drink">
-        <h5><iconify-icon icon="material-symbols:emoji-food-beverage"></iconify-icon> Drink</h5>
+        <h5><iconify-icon icon="material-symbols:emoji-food-beverage"></iconify-icon> <span tabindex="0">Drink</span></h5>
 
         <ul>
           ${createMenuItemListTemplate(restaurant.menus.drinks)}
@@ -78,17 +79,23 @@ export const createRestaurantDetailTemplate = (restaurant) => {
           <div class="review__form_content">
             <div class="form_content__group">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name">
+              <input type="text" id="name" name="name" required>
             </div> 
             
             <div class="form_content__group">
               <label for="review">Review</label>
-              <textarea id="review" name="review"></textarea>
+              <textarea id="review" name="review" required></textarea>
             </div>
 
             <div class="form_content__action">
-              <span class="form_action__date">${new Date().toLocaleDateString()}</span>
-              <button type="submit">Submit</button>
+              <div class="action_left">
+                <span class="form_action__date">
+                  ${new Date().toLocaleDateString()}
+                </span>
+                <img class="form_action__loading" src="${SpinnerLoadingState}" alt="Loading" />
+              </div>
+
+              <button tabindex="0" type="submit">Submit</button>
             </div>
           </div>
         </form>
@@ -136,14 +143,14 @@ export const createRatingTemplate = (rate) => {
 };
 
 export const createFavoriteButtonTemplate = () => String.raw`
-  <button id="favorite-button">
+  <button id="favorite-button" tabindex="0">
     <iconify-icon icon="ri:bookmark-3-line"></iconify-icon>
     Add to Favorites
   </button>
 `;
 
 export const createFavoritedButtonTemplate = () => String.raw`
-  <button id="favorite-button" class="favorited">
+  <button id="favorite-button" class="favorited" tabindex="0">
     <iconify-icon icon="ri:bookmark-2-line"></iconify-icon>
     Cancel Favorite
   </button>

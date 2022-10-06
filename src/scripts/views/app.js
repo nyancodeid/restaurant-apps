@@ -9,16 +9,21 @@ import DrawerInitiator from '../utils/drawer.initiator';
 import UrlParser from '../utils/url.parser';
 
 class App {
-  constructor({ button, drawer, content }) {
+  constructor({
+    button, drawer, content, skipLink,
+  }) {
     this._button = button;
     this._drawer = drawer;
     this._content = content;
+    this._skipLink = skipLink;
 
-    this._initialAppShell();
     this._initialCustomElement();
+    this._initialAppShell();
   }
 
   _initialAppShell() {
+    this._initialSkipLink();
+
     DrawerInitiator.init({
       button: this._button,
       drawer: this._drawer,
@@ -34,11 +39,20 @@ class App {
     customElements.define('random-emoji', RandomEmoji);
   }
 
+  _initialSkipLink() {
+    this._skipLink.addEventListener('click', () => {
+      this._content.tabIndex = 0;
+      this._content.focus();
+    });
+  }
+
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
 
-    this._content.innerHTML = await page.render();
+    const main = this._content.querySelector('#main-content');
+    main.innerHTML = await page.render();
+
     await page.afterRender();
   }
 }

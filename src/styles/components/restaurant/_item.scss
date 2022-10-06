@@ -46,6 +46,14 @@ restaurant-item {
         height: 44px;
         line-height: 44px;
       }
+      .restaurant_item__reservasion {
+        background-color: unset;
+
+        iconify-icon {
+          font-size: 24px;
+          color: $dark-color;
+        }
+      }
     }
 
     .restaurant_item__rating {

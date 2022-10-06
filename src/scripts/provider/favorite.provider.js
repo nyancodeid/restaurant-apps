@@ -2,32 +2,32 @@ import { openDB as useIndexedDB } from 'idb';
 import config from '../config/app.config';
 
 const {
-  db: { object_store_name },
+  db: { objectStorageName },
 } = config;
 
 class FavoriteRestaurantProvider {
   constructor() {
     this.database = useIndexedDB(config.db.name, config.db.version, {
       upgrade(db) {
-        db.createObjectStore(object_store_name, { keyPath: 'id' });
+        db.createObjectStore(objectStorageName, { keyPath: 'id' });
       },
     });
   }
 
   async getRestaurant(id) {
-    return (await this.database).get(object_store_name, id);
+    return (await this.database).get(objectStorageName, id);
   }
 
   async getAllRestaurants() {
-    return (await this.database).getAll(object_store_name);
+    return (await this.database).getAll(objectStorageName);
   }
 
   async putRestaurant(restaurant) {
-    return (await this.database).put(object_store_name, restaurant);
+    return (await this.database).put(objectStorageName, restaurant);
   }
 
   async deleteRestaurant(id) {
-    return (await this.database).delete(object_store_name, id);
+    return (await this.database).delete(objectStorageName, id);
   }
 }
 
