@@ -98,6 +98,7 @@ footer {
 
         .footer_download {
           display: flex;
+          flex-direction: column;
           gap: 12px;
 
           img {
@@ -123,6 +124,13 @@ footer {
         }
       }
 
+      @include breakpoint(mobile) {
+        .footer_brand {
+          .footer_download {  
+            flex-direction: row;
+          }
+        }
+      }
       @include breakpoint(tablet) {
         .footer_navigation li a {
           font-size: 13px;

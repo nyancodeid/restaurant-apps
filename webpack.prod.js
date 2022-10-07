@@ -76,11 +76,26 @@ module.exports = merge(common, {
       theme_color: '#d9a404',
       crossorigin: 'use-credentials',
       fingerprints: false,
+      ios: true,
       icons: [
         {
+          src: path.resolve('src/public/icon.ios.png'),
+          sizes: [180],
+          destination: path.join('icons', 'ios'),
+          purpose: 'maskable',
+          ios: true,
+        },
+        {
           src: path.resolve('src/public/icon.png'),
-          sizes: [72, 96, 128, 144, 152, 192, 384, 512], // multiple sizes
+          sizes: [72, 96, 128, 152, 192, 384], // multiple sizes
           destination: 'icons',
+          purpose: 'maskable',
+        },
+        {
+          src: path.resolve('src/public/icon.png'),
+          sizes: [144, 512], // multiple sizes
+          destination: 'icons',
+          purpose: 'any',
         },
       ],
     }),
