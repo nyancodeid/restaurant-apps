@@ -116,15 +116,15 @@ export const createRestaurantDetailTemplate = (restaurant) => {
 };
 
 export const createRestaurantsLoadingTemplate = () => String.raw`
-  <img class="skeleton-loading" src="${RestaurantsLoading}" />
+  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
 
-  <img class="skeleton-loading" src="${RestaurantsLoading}" />
+  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
 
-  <img class="skeleton-loading" src="${RestaurantsLoading}" />
+  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
 `;
 
 export const createRestaurantDetailLoadingTemplate = () => String.raw`
-  <img class="skeleton-loading" src="${RestaurantDetailLoading}" />
+  <img class="skeleton-loading" src="${RestaurantDetailLoading}" alt="Loading" />
 `;
 
 export const createRatingTemplate = (rate) => {
