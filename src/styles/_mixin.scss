@@ -1,8 +1,15 @@
+$mobile-width: 320px;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 $container-width: 1180px;
 
 @mixin breakpoint($breakpoint) {
+  @if $breakpoint == mobile {
+    @media screen and (min-width: calc($mobile-width + 1px)) {
+      @content;
+    }
+  }
+
   @if $breakpoint == tablet {
     @media screen and (min-width: $tablet-width) {
       @content;
@@ -32,4 +39,8 @@ $container-width: 1180px;
       @content;
     }
   }
+}
+
+@mixin button-focus {
+  box-shadow: rgb(255 255 255) 0px 0px 0px 3px, rgb(113 80 51) 0px 0px 0px 6px, rgb(0 0 0 / 5%) 0px 1px 2px 0px;
 }

@@ -1,17 +1,24 @@
-import "regenerator-runtime"; /* for async await transpile */
-import "../styles/main.scss";
+import 'iconify-icon';
+import 'regenerator-runtime';
+import '../styles/main.scss';
+import 'notyf/notyf.min.css';
 
-import repository from "../DATA.json";
-import RestauranItem from "./components/restaurant-item";
-import { useDrawer } from "./useDrawer";
-import { useRestaurant } from "./useRestaurant";
-import { useSearch } from "./useSearch";
+import App from './views/app';
+import ServiceWorker from './utils/sw.register';
 
-customElements.define("restaurant-item", RestauranItem);
+const app = new App({
+  button: document.querySelector('#nav-trigger'),
+  drawer: document.querySelector('#nav-drawer'),
+  content: document.querySelector('#content'),
+  skipLink: document.querySelector('#skip-link'),
+});
 
-document.addEventListener("DOMContentLoaded", () => {
-  useDrawer("#menu");
-  useSearch(repository, (restaurants) => {
-    useRestaurant(restaurants);
-  });
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', () => {
+  app.renderPage();
+
+  ServiceWorker.register();
 });

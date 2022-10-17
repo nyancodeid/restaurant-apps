@@ -1,16 +1,14 @@
-const { merge } = require("webpack-merge");
-const path = require("path");
-const common = require("./webpack.common");
+const { merge } = require('webpack-merge');
+const path = require('path');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
-  mode: "development",
-  devtool: "inline-source-map",
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
-    static: path.resolve(__dirname, "dist"),
-    hot: true,
+    static: path.resolve(__dirname, 'dist'),
     open: true,
-    port: 9000,
-    watchFiles: ["src/**/*"],
+    port: 5000,
     client: {
       overlay: {
         errors: true,
@@ -22,16 +20,16 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(scss|css)$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
           },
         ],
       },

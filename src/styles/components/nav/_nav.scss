@@ -1,0 +1,96 @@
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $nav-height;
+  padding: 0 1.5em;
+
+  @include breakpoint(container) {
+    & {
+      padding: 0;
+    }
+  }
+
+  &,
+  a {
+    color: $dark-color;
+  }
+  .nav_brand h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: $dark-color;
+    margin: 0;
+    padding: 11px 0;
+
+    b {
+      color: $brand-color;
+    }
+  }
+  .nav_menu {
+    font-size: 1.5em;
+    font-weight: 700;
+    user-select: none;
+    cursor: pointer;
+
+    button {
+      background-color: unset;
+      font-size: 24px;
+    }
+  }
+  .nav_list {
+    margin: 0;
+    list-style: none;
+    transform: translateY(-10px);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: (-$nav-height);
+
+    @include breakpoint(tablet-max) {
+      &.nav_list__open {
+        display: flex;
+        flex-direction: column;
+        z-index: 1;
+        width: 100%;
+        top: $nav-height;
+        left: 0;
+        background-color: lighten($brand-color, 10%);
+        transform: translateY(-1px);
+
+        a {
+          display: block;
+          padding: 16px 32px;
+          font-size: 16px;
+
+          &:hover {
+            background-color: lighten($brand-color, 5%);
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(tablet) {
+    .nav_menu {
+      display: none;
+    }
+    .nav_list {
+      display: flex;
+      position: unset;
+      top: unset;
+      transform: unset;
+      transition: unset;
+
+      a {
+        display: block;
+        height: $nav-height;
+        line-height: $nav-height;
+        padding: 0 16px;
+
+        &:hover {
+          background-color: #ffe5cc;
+        }
+      }
+    }
+  }
+}
