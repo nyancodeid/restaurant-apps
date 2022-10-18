@@ -12,19 +12,19 @@ class FooterSection extends HTMLElement {
             <div class="footer_download">
               <a href="#">
                 <img
-                  class="lazyload"
+                  loading="lazy"
                   width="148.5px"
                   height="44px"
-                  data-src="images/app-store.webp"
+                  src="images/app-store.webp"
                   alt="Download on the App Store"
                 />
               </a>
               <a href="#">
                 <img
-                  class="lazyload"
+                  loading="lazy"
                   width="148.5px"
                   height="44px"
-                  data-src="images/play-store.webp"
+                  src="images/play-store.webp"
                   alt="Get it on Google Play Store"
                 />
               </a>
