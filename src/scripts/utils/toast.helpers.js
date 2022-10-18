@@ -15,8 +15,6 @@ class ToastHelpers {
         },
       ],
     });
-
-    window.notyf = this.notyf;
   }
 
   withError(error) {

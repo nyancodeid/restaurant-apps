@@ -1,9 +1,9 @@
 const routes = {
-  '/': import('../views/pages/restaurants.view')
+  '/': import(/* webpackChunkName: "restaurants-view" */ '../views/pages/restaurants.view')
     .then(view => view.default),
-  '/favorite': import('../views/pages/favorite.view')
+  '/favorite': import(/* webpackChunkName: "favorite-view" */'../views/pages/favorite.view')
     .then(view => view.default),
-  '/detail/:id': import('../views/pages/detail.view')
+  '/detail/:id': import(/* webpackChunkName: "detail-view" */ '../views/pages/detail.view')
     .then(view => view.default),
 };
 

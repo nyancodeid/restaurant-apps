@@ -19,6 +19,7 @@ class RestauranItem extends HTMLElement {
       <div class="restaurant_item__header">
         <img
           class="lazyload"
+          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
           data-src="${this.thumbnail}"
           alt="${name}"
         />
