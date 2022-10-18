@@ -48,12 +48,31 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = await routes[url];
-
     const main = this._content.querySelector('#main-content');
-    main.innerHTML = await page.render();
 
-    await page.afterRender();
+    try {
+      const page = await routes[url];
+      main.innerHTML = await page.render();
+  
+      await page.afterRender();
+    } catch (err) {
+      main.innerHTML = this._renderErrorNotFound();
+    }
+  }
+
+  _renderErrorNotFound() {
+    return String.raw`
+      <section class="restaurant restaurant_favorite">
+        <div class="wrapper_container">
+          <div class="restaurant_contents">
+            <div class="restaurant__empty_result active">
+              <random-emoji></random-emoji>
+              <span>Whopss! we can't found the page your are requested.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    `
   }
 }
 
