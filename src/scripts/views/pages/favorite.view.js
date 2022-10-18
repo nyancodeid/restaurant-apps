@@ -2,6 +2,7 @@ import FavoriteProvider from '../../provider/favorite.provider';
 import FavoriteRestaurantShowPresenter from '../components/favorite-restaurants/show.presenter';
 import FavoriteRestaurantSearchPresenter from '../components/favorite-restaurants/search.presenter';
 import FavoriteRestaurantSearchView from '../components/favorite-restaurants/search.view';
+import { setActiveNavbar } from '../../utils/navbar';
 
 class FavoriteRestaurants {
   constructor() {
@@ -28,6 +29,8 @@ class FavoriteRestaurants {
   async afterRender() {
     this._hideHero();
     this._scrollToTop();
+
+    setActiveNavbar('favorite');
 
     new FavoriteRestaurantShowPresenter({
       view: this._searchView,

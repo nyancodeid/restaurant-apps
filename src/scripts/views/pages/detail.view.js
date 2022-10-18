@@ -5,6 +5,7 @@ import reviewInitiator from '../../utils/review.initiator';
 
 import RestaurantProvider from '../../provider/restaurant.provider';
 import FavoriteRestaurantProvider from '../../provider/favorite.provider';
+import { setActiveNavbar } from '../../utils/navbar';
 
 class DetailRestaurant {
   async render() {
@@ -18,6 +19,8 @@ class DetailRestaurant {
   async afterRender() {
     this._hideHero();
     this._scrollToTop();
+
+    setActiveNavbar('detail');
 
     const content = document.querySelector('section.restaurant-detail > .wrapper_container');
     content.innerHTML = createRestaurantDetailLoadingTemplate();

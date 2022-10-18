@@ -1,4 +1,5 @@
 import RestaurantProvider from '../../provider/restaurant.provider';
+import { setActiveNavbar } from '../../utils/navbar';
 import SearchInitiator from '../../utils/search.initiator';
 import { createRestaurantsLoadingTemplate } from '../templates/creator.template';
 
@@ -30,6 +31,8 @@ class Restaurants {
 
   async afterRender() {
     this._showHero();
+
+    setActiveNavbar('home');
 
     const container = document.querySelector('section.restaurant .restaurant_lists');
     container.innerHTML = createRestaurantsLoadingTemplate();

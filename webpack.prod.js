@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const Critters = require('critters-webpack-plugin');
+const Critters = require('critters-webpack-xplugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -123,6 +123,10 @@ module.exports = merge(common, {
       swDest: './sw.bundle.js',
       clientsClaim: true,
       skipWaiting: true,
+      exclude: [
+        /\.map$/,
+        /\.LICENSE.txt$/
+      ],
       runtimeCaching: [
         {
           urlPattern: /https:\/\/restaurant-api.dicoding.dev\/list/,

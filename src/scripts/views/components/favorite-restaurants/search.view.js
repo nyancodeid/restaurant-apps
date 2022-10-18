@@ -1,4 +1,10 @@
+import { hash } from "../../../utils/helpers";
+
 class FavoriteRestaurantSearchView {
+  constructor() {
+    this.prevContentHash = null;
+  }
+
   getTemplate() {
     return String.raw`
       <section class="search_widget__wrapper non-absolute">
@@ -35,7 +41,15 @@ class FavoriteRestaurantSearchView {
   }
 
   showFavoriteRestaurants(restaurants = []) {
+    const currentHash = hash(JSON.stringify(restaurants));
     const viewContainer = document.querySelector('.restaurant_contents');
+    
+    // is the current restaurants are still the same from prev (currently show) restaurants?
+    // if it does, we don't need re-render the DOM.
+    if (currentHash === this.prevContentHash) {
+      viewContainer.dispatchEvent(new Event('restaurants:updated'));
+      return;
+    };
 
     if (restaurants.length === 0) {
       viewContainer.innerHTML = this._getEmptyTemplate();
@@ -51,6 +65,8 @@ class FavoriteRestaurantSearchView {
         restaurantListContainer.appendChild(restauranItemElement);
       });
     }
+
+    this.prevContentHash = currentHash;
 
     viewContainer.dispatchEvent(new Event('restaurants:updated'));
   }

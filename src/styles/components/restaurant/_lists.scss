@@ -4,6 +4,10 @@ section.restaurant {
   &.restaurant_favorite {
     padding-bottom: 4em;
     background-color: #fffcfa;
+
+    .wrapper_container {
+      gap: 2em;
+    }
   }
 
   .wrapper_container {

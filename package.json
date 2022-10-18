@@ -25,7 +25,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "codeceptjs": "^3.3.6",
     "copy-webpack-plugin": "^11.0.0",
-    "critters-webpack-plugin": "^3.0.2",
+    "critters-webpack-xplugin": "^3.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",

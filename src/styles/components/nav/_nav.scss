@@ -81,14 +81,23 @@ nav {
       transform: unset;
       transition: unset;
 
-      a {
-        display: block;
-        height: $nav-height;
-        line-height: $nav-height;
-        padding: 0 16px;
+      .nav_list__item {
 
-        &:hover {
-          background-color: #ffe5cc;
+        &.active a {
+          font-weight: bold;
+          background-color: #fce1c8;
+          border-bottom: 4px solid darken(#ffe5cc, 20%);
+        }
+
+        a {
+          display: block;
+          height: $nav-height;
+          line-height: $nav-height;
+          padding: 0 16px;
+  
+          &:hover {
+            background-color: #ffe5cc;
+          }
         }
       }
     }

@@ -9,7 +9,7 @@ specifiers:
   clean-webpack-plugin: ^4.0.0
   codeceptjs: ^3.3.6
   copy-webpack-plugin: ^11.0.0
-  critters-webpack-plugin: ^3.0.2
+  critters-webpack-xplugin: ^3.1.0
   css-loader: ^6.7.1
   eslint: ^7.32.0 || ^8.2.0
   eslint-config-airbnb-base: ^15.0.0
@@ -65,7 +65,7 @@ devDependencies:
   clean-webpack-plugin: 4.0.0_webpack@5.74.0
   codeceptjs: 3.3.6_@faker-js+faker@5.5.3
   copy-webpack-plugin: 11.0.0_webpack@5.74.0
-  critters-webpack-plugin: 3.0.2_html-webpack-plugin@5.5.0
+  critters-webpack-xplugin: 3.1.0_html-webpack-plugin@5.5.0
   css-loader: 6.7.1_webpack@5.74.0
   eslint: 8.23.1
   eslint-config-airbnb-base: 15.0.0_hdzsmr7kawaomymueo2tso6fjq
@@ -3132,10 +3132,10 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /critters-webpack-plugin/3.0.2_html-webpack-plugin@5.5.0:
-    resolution: {integrity: sha512-WdGtrjfzTGTuLL1qR9yIrPvrF+r4Fq5MsI+hfjuujLRVzh5UOl1TPCdX4kJU12iK5LFHtbNtezcAJCaXpvozHA==}
+  /critters-webpack-xplugin/3.1.0_html-webpack-plugin@5.5.0:
+    resolution: {integrity: sha512-g2NT9hD85ONj0E7fYAzO8Admkhyfr2ihbKQ9bMYecesPtJ61i66dWvSqbHQUikgF8sUTJ9GsDZW+pIIsBs3OPA==}
     peerDependencies:
-      html-webpack-plugin: ^4.5.2
+      html-webpack-plugin: ^5.5.0
     peerDependenciesMeta:
       html-webpack-plugin:
         optional: true
