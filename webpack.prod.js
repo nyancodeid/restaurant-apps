@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const Critters = require('critters-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -24,7 +25,7 @@ module.exports = merge(common, {
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
+      automaticNameDelimiter: '.',
       enforceSizeThreshold: 50000,
       cacheGroups: {
         defaultVendors: {
@@ -146,5 +147,6 @@ module.exports = merge(common, {
       generateStatsFile: true,
       statsOptions: { source: false },
     }),
+    new Critters(),
   ],
 });

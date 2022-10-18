@@ -9,6 +9,7 @@ specifiers:
   clean-webpack-plugin: ^4.0.0
   codeceptjs: ^3.3.6
   copy-webpack-plugin: ^11.0.0
+  critters-webpack-plugin: ^3.0.2
   css-loader: ^6.7.1
   eslint: ^7.32.0 || ^8.2.0
   eslint-config-airbnb-base: ^15.0.0
@@ -64,6 +65,7 @@ devDependencies:
   clean-webpack-plugin: 4.0.0_webpack@5.74.0
   codeceptjs: 3.3.6_@faker-js+faker@5.5.3
   copy-webpack-plugin: 11.0.0_webpack@5.74.0
+  critters-webpack-plugin: 3.0.2_html-webpack-plugin@5.5.0
   css-loader: 6.7.1_webpack@5.74.0
   eslint: 8.23.1
   eslint-config-airbnb-base: 15.0.0_hdzsmr7kawaomymueo2tso6fjq
@@ -3130,6 +3132,32 @@ packages:
       yaml: 1.10.2
     dev: true
 
+  /critters-webpack-plugin/3.0.2_html-webpack-plugin@5.5.0:
+    resolution: {integrity: sha512-WdGtrjfzTGTuLL1qR9yIrPvrF+r4Fq5MsI+hfjuujLRVzh5UOl1TPCdX4kJU12iK5LFHtbNtezcAJCaXpvozHA==}
+    peerDependencies:
+      html-webpack-plugin: ^4.5.2
+    peerDependenciesMeta:
+      html-webpack-plugin:
+        optional: true
+    dependencies:
+      critters: 0.0.16
+      html-webpack-plugin: 5.5.0_webpack@5.74.0
+      minimatch: 3.1.2
+      webpack-log: 3.0.2
+      webpack-sources: 1.4.3
+    dev: true
+
+  /critters/0.0.16:
+    resolution: {integrity: sha512-JwjgmO6i3y6RWtLYmXwO5jMd+maZt8Tnfu7VVISmEWyQqfLpB8soBswf8/2bu6SBXxtKA68Al3c+qIG1ApT68A==}
+    dependencies:
+      chalk: 4.1.2
+      css-select: 4.3.0
+      parse5: 6.0.1
+      parse5-htmlparser2-tree-adapter: 6.0.1
+      postcss: 8.4.18
+      pretty-bytes: 5.6.0
+    dev: true
+
   /cross-fetch/3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
@@ -5494,6 +5522,11 @@ packages:
       - supports-color
     dev: true
 
+  /loglevelnext/3.0.1:
+    resolution: {integrity: sha512-JpjaJhIN1reaSb26SIxDGtE0uc67gPl19OMVHrr+Ggt6b/Vy60jmCtKgQBrygAH0bhRA2nkxgDvM+8QvR8r0YA==}
+    engines: {node: '>= 6.14.4'}
+    dev: true
+
   /loupe/2.3.4:
     resolution: {integrity: sha512-OvKfgCC2Ndby6aSTREl5aCCPTNIzlDfQZvZxNUrBrihDhL3xcrYegTblhmEiCrg2kKQz4XsFIaemE5BF4ybSaQ==}
     dependencies:
@@ -5758,6 +5791,10 @@ packages:
 
   /mute-stream/0.0.7:
     resolution: {integrity: sha512-r65nCZhrbXXb6dXOACihYApHw2Q6pV0M3V0PSxd74N0+D8nzAdEAITq2oAjA1jVnKI+tGvEBUpqiMh0+rW6zDQ==}
+    dev: true
+
+  /nanoid/2.1.11:
+    resolution: {integrity: sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==}
     dev: true
 
   /nanoid/3.3.4:
@@ -6097,6 +6134,16 @@ packages:
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
+    dev: true
+
+  /parse5-htmlparser2-tree-adapter/6.0.1:
+    resolution: {integrity: sha512-qPuWvbLgvDGilKc5BoicRovlT4MtYT6JfJyBOMDsKoiT+GiuP5qyrPCnR9HcPECIJJmZh5jRndyNThnhhb/vlA==}
+    dependencies:
+      parse5: 6.0.1
+    dev: true
+
+  /parse5/6.0.1:
+    resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: true
 
   /parseqs/0.0.6:
@@ -7833,6 +7880,15 @@ packages:
       - debug
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /webpack-log/3.0.2:
+    resolution: {integrity: sha512-ijm2zgqTY2omtlxRNrtDqxAQOrfAGMxWg9fQB/kuFSeZjx/OkYnfYLqsjf/JkrWOHINMzqxaJDXaog6Mx9KaHg==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      chalk: 2.4.2
+      loglevelnext: 3.0.1
+      nanoid: 2.1.11
     dev: true
 
   /webpack-merge/4.2.2:
