@@ -1,8 +1,8 @@
 {
   "hash": "1bb96537a9027cca477c",
   "version": "5.74.0",
-  "time": 20276,
-  "builtAt": 1666072890498,
+  "time": 18855,
+  "builtAt": 1666073539968,
   "publicPath": "auto",
   "outputPath": "/home/ryanaunur/Kuliah/Semester 5/Expert/restaurant-apps/dist",
   "assetsByChunkName": {
@@ -12046,8 +12046,8 @@
       "name": "HtmlWebpackCompiler",
       "hash": "76908b099bc3678254f7",
       "version": "5.74.0",
-      "time": 205,
-      "builtAt": 1666072870483,
+      "time": 177,
+      "builtAt": 1666073521349,
       "publicPath": "",
       "outputPath": "/home/ryanaunur/Kuliah/Semester 5/Expert/restaurant-apps/dist",
       "assetsByChunkName": {},
