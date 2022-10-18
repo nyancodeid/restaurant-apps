@@ -5,8 +5,7 @@ section.hero {
   justify-content: center;
   min-height: 347px;
   text-align: center;
-  background: linear-gradient(rgba(0, 0, 5, 0.5), rgba(0, 0, 5, 0.5)),
-    url('../public/images/heros/hero-image_4.jpg') center no-repeat;
+  background: linear-gradient(rgba(0, 0, 5, 0.5), rgba(0, 0, 5, 0.5));
   background-size: cover;
 
   color: #fff;
@@ -16,7 +15,21 @@ section.hero {
     display: none;
   }
 
+  .hero_image {
+    width: 100%;
+
+    img {
+      height: 347px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.6);
+    }
+  }
+
   .hero_inner {
+    position: absolute;
+
     .hero_title {
       font-size: 3em;
       margin-bottom: 0.5em;
@@ -41,67 +54,6 @@ section.hero {
       }
       .hero_subtitle {
         font-size: 2em;
-      }
-    }
-  }
-
-  .search_widget__wrapper {
-    position: absolute;
-    bottom: calc(($nav-height / 2) * -1);
-    left: 0;
-    width: 100%;
-
-    .wrapper_container {
-      padding: 0 1.5em;
-
-      @include breakpoint(container) {
-        & {
-          padding: 0;
-        }
-      }
-    }
-
-    .search_widget__inner {
-      display: flex;
-      align-items: center;
-      background-color: lighten($color: $light-color, $amount: 10%);
-      border-radius: 8px;
-      box-shadow: rgb(0 0 0 / 12%) 0px 1px 6px 0px;
-      padding-left: 24px;
-      padding-right: 8px;
-      height: $nav-height;
-
-      .search_widget__input {
-        font-family: 'Open Sans', sans-serif;
-        flex: 1 1 0%;
-        outline: none;
-        border: none;
-        font-size: 16px;
-        padding: 11px 0;
-      }
-
-      .search_widget__clear {
-        display: none;
-
-        &.active {
-          display: block;
-        }
-      }
-
-      .search_widget__action,
-      .search_widget__clear {
-        background-color: transparent;
-        cursor: pointer;
-
-        path {
-          fill: $dark-color;
-        }
-      }
-
-      .search_widget__clear:focus-visible,
-      .search_widget__action:focus-visible {
-        border: 2px solid $dark-color;
-        border-radius: 8px;
       }
     }
   }

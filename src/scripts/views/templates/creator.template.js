@@ -1,9 +1,5 @@
 import api from '../../config/api.config';
 
-import RestaurantsLoading from '../../../public/images/restaurants-loading.svg';
-import RestaurantDetailLoading from '../../../public/images/detail-loading.svg';
-import SpinnerLoadingState from '../../../public/images/spinner.webp';
-
 export const createMenuItemListTemplate = (items) => items.map((item) => `<li><span tabindex="0">${item.name}</span></li>`).join('');
 
 export const createRestaurantDetailTemplate = (restaurant) => {
@@ -92,7 +88,7 @@ export const createRestaurantDetailTemplate = (restaurant) => {
                 <span class="form_action__date">
                   ${new Date().toLocaleDateString()}
                 </span>
-                <img class="form_action__loading" src="${SpinnerLoadingState}" alt="Loading" />
+                <img class="form_action__loading" src="images/spinner.webp" alt="Loading" />
               </div>
 
               <button tabindex="0" type="submit">Submit</button>
@@ -116,15 +112,15 @@ export const createRestaurantDetailTemplate = (restaurant) => {
 };
 
 export const createRestaurantsLoadingTemplate = () => String.raw`
-  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
+  <img class="skeleton-loading" src="images/restaurant-loading.svg" alt="Loading" />
 
-  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
+  <img class="skeleton-loading" src="images/restaurant-loading.svg" alt="Loading" />
 
-  <img class="skeleton-loading" src="${RestaurantsLoading}" alt="Loading" />
+  <img class="skeleton-loading" src="images/restaurant-loading.svg" alt="Loading" />
 `;
 
 export const createRestaurantDetailLoadingTemplate = () => String.raw`
-  <img class="skeleton-loading" src="${RestaurantDetailLoading}" alt="Loading" />
+  <img class="skeleton-loading" src="images/detail-loading.svg" alt="Loading" />
 `;
 
 export const createRatingTemplate = (rate) => {
@@ -143,14 +139,14 @@ export const createRatingTemplate = (rate) => {
 };
 
 export const createFavoriteButtonTemplate = () => String.raw`
-  <button id="favorite-button" tabindex="0">
+  <button id="favorite-button" aria-label="add to favorited restaurant" tabindex="0">
     <iconify-icon icon="ri:bookmark-3-line"></iconify-icon>
     Add to Favorites
   </button>
 `;
 
 export const createFavoritedButtonTemplate = () => String.raw`
-  <button id="favorite-button" class="favorited" tabindex="0">
+  <button id="favorite-button" aria-label="remove from favorited restaurant" class="favorited" tabindex="0">
     <iconify-icon icon="ri:bookmark-2-line"></iconify-icon>
     Cancel Favorite
   </button>

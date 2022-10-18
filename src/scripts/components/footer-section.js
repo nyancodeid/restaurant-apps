@@ -1,11 +1,7 @@
-import AppStoreImage from '../../public/images/app-store.webp';
-import PlayStoreImage from '../../public/images/play-store.webp';
-
 class FooterSection extends HTMLElement {
   connectedCallback() {
     this.render();
   }
-
   render() {
     this.innerHTML = String.raw`
       <section class="footer_content">
@@ -16,15 +12,19 @@ class FooterSection extends HTMLElement {
             <div class="footer_download">
               <a href="#">
                 <img
-                  loading="lazy"
-                  src="${AppStoreImage}"
+                  class="lazysizes"
+                  width="148.5px"
+                  height="44px"
+                  data-src="images/app-store.webp"
                   alt="Download on the App Store"
                 />
               </a>
               <a href="#">
                 <img
-                  loading="lazy"
-                  src="${PlayStoreImage}"
+                  class="lazysizes"
+                  width="148.5px"
+                  height="44px"
+                  data-src="images/play-store.webp"
                   alt="Get it on Google Play Store"
                 />
               </a>

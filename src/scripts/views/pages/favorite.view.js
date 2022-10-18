@@ -1,8 +1,16 @@
 import FavoriteProvider from '../../provider/favorite.provider';
-import { createRestaurantsLoadingTemplate } from '../templates/creator.template';
+import FavoriteRestaurantShowPresenter from '../components/favorite-restaurants/show.presenter';
+import FavoriteRestaurantSearchPresenter from '../components/favorite-restaurants/search.presenter';
+import FavoriteRestaurantSearchView from '../components/favorite-restaurants/search.view';
 
 class FavoriteRestaurants {
+  constructor() {
+    this._searchView = new FavoriteRestaurantSearchView();
+  }
+
   async render() {
+    const content = this._searchView.getTemplate();
+
     return String.raw`
       <section class="restaurant restaurant_favorite">
         <div class="wrapper_container">
@@ -11,14 +19,7 @@ class FavoriteRestaurants {
             <p>Lists of favorite restaurants.</p>
           </div>
 
-          <div class="restaurant_contents">
-            <p class="restaurant_count">Showing 0 items out of 0 total</p>
-            <div class="restaurant_lists"></div>
-            <div class="restaurant__empty_result">
-              <random-emoji></random-emoji>
-              <span>Whopss! it's look like you doesn't have any favorite restaurant.</span>
-            </div>
-          </div>
+          ${content}
         </div>
       </section>
     `;
@@ -28,26 +29,14 @@ class FavoriteRestaurants {
     this._hideHero();
     this._scrollToTop();
 
-    const countElement = document.querySelector('section.restaurant .restaurant_count');
-    const container = document.querySelector('section.restaurant .restaurant_lists');
-    container.innerHTML = createRestaurantsLoadingTemplate();
-
-    const restaurants = await FavoriteProvider.getAllRestaurants();
-
-    container.innerHTML = '';
-    countElement.innerText = `Showing ${restaurants.length} items out of ${restaurants.length}`;
-
-    restaurants.forEach((restaurant) => {
-      const restauranElement = document.createElement('restaurant-item');
-
-      restauranElement.restaurant = restaurant;
-      container.appendChild(restauranElement);
+    new FavoriteRestaurantShowPresenter({
+      view: this._searchView,
+      provider: FavoriteProvider,
     });
-
-    if (restaurants.length === 0) {
-      const emptyElement = document.querySelector('.restaurant__empty_result');
-      emptyElement.classList.add('active');
-    }
+    new FavoriteRestaurantSearchPresenter({
+      view: this._searchView,
+      provider: FavoriteProvider,
+    });
   }
 
   _hideHero() {

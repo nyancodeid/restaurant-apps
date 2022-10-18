@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable global-require */
 // Karma configuration
 // Generated on Fri Jul 03 2020 20:15:52 GMT+0700 (Western Indonesia Time)
 module.exports = function (config) {
@@ -12,7 +14,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'specs/**/*Spec.js',
+      'specs/**/*.spec.js',
     ],
 
     // list of files / patterns to exclude
@@ -21,7 +23,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'specs/**/*Spec.js': ['webpack', 'sourcemap'],
+      'specs/**/*.spec.js': ['webpack', 'sourcemap'],
     },
 
     webpack: {
@@ -31,6 +33,15 @@ module.exports = function (config) {
       // webpack configuration
       devtool: 'inline-source-map',
       mode: 'development',
+      module: {
+        rules: [
+          {
+            test: /\.(png|svg|webp|jpg|jpeg|gif)$/,
+            dependency: { not: ['url'] },
+            type: 'asset/resource',
+          },
+        ],
+      },
     },
 
     webpackMiddleware: {
@@ -42,7 +53,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
     // web server port
     port: 9876,
@@ -53,14 +64,14 @@ module.exports = function (config) {
     // level of logging
     /* possible values: config.LOG_DISABLE || config.LOG_ERROR
     || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG */
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DISABLE,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -69,5 +80,14 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity,
+    // Need manually import due PNPM issue for automatically
+    // import required plugins
+    plugins: [
+      require('karma-webpack'),
+      require('karma-jasmine'),
+      require('karma-sourcemap-loader'),
+      require('karma-chrome-launcher'),
+      require('karma-spec-reporter'),
+    ],
   });
 };
