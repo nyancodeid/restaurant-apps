@@ -290,6 +290,7 @@ section.restaurant-detail {
           display: flex;
           align-items: flex-start;
           column-gap: 1em;
+          word-break: break-all;
 
           .review__item_avatar {
             width: 48px;

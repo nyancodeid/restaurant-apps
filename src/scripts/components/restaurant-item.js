@@ -13,13 +13,13 @@ class RestauranItem extends HTMLElement {
   }
 
   render({
-    id, name, description, city, rating,
+    id, name, description, city, rating = 0,
   }) {
     this.innerHTML = String.raw`
       <div class="restaurant_item__header">
         <img
-          loading="lazy"
-          src="${this.thumbnail}"
+          class="lazyload"
+          data-src="${this.thumbnail}"
           alt="${name}"
         />
 
@@ -28,7 +28,7 @@ class RestauranItem extends HTMLElement {
       <div class="restaurant_item__content">
         <div class="restaurant_title">
           <a class="restaurant_item__title" href="/#/detail/${id}">
-            <h3>${name}</h3>
+            <h3>${name || '-'}</h3>
           </a>
 
           <button tabindex="0" type="button" class="restaurant_item__reservasion touch__target" aria-label="Made a reservasion">
@@ -41,7 +41,7 @@ class RestauranItem extends HTMLElement {
           <span class="badge" tabindex="0" aria-label="Restaurant rating is ${rating}">${rating}</span>
         </div>
         <p>
-          ${description}
+          ${description || '-'}
         </p>
       </div>
     `;

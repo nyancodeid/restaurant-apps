@@ -1,8 +1,10 @@
 import UrlParser from '../../utils/url.parser';
-import RestaurantProvider from '../../provider/restaurant.provider';
 import { createRestaurantDetailLoadingTemplate, createRestaurantDetailTemplate } from '../templates/creator.template';
-import favoriteButtonInitiator from '../../utils/favorite.button.initiator';
+import favoriteButtonInitiator from '../../utils/favorite.button.presenter';
 import reviewInitiator from '../../utils/review.initiator';
+
+import RestaurantProvider from '../../provider/restaurant.provider';
+import FavoriteRestaurantProvider from '../../provider/favorite.provider';
 
 class DetailRestaurant {
   async render() {
@@ -43,6 +45,7 @@ class DetailRestaurant {
 
     favoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('.description_actions'),
+      favoriteProvider: FavoriteRestaurantProvider,
       restaurant: {
         id: restaurant.id,
         name: restaurant.name,

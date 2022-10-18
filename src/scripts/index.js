@@ -1,5 +1,7 @@
+import 'lazysizes';
 import 'iconify-icon';
 import 'regenerator-runtime';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import '../styles/main.scss';
 import 'notyf/notyf.min.css';
 
