@@ -48,7 +48,7 @@ class App {
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
-    const page = routes[url];
+    const page = await routes[url];
 
     const main = this._content.querySelector('#main-content');
     main.innerHTML = await page.render();
