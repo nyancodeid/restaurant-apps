@@ -9,7 +9,7 @@ const targets = [
     destination: path.resolve(__dirname, '../src/public/images/heros'),
     filename: (size, ext) => `hero-w-${size}.${ext}`,
   }
-]
+];
 
 async function main() {
   const tasks = targets.map(({ source, destination, resize, filename }) => {
