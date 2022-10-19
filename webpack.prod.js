@@ -125,7 +125,7 @@ module.exports = merge(common, {
       skipWaiting: true,
       exclude: [
         /\.map$/,
-        /\.LICENSE.txt$/
+        /\.LICENSE.txt$/,
       ],
       runtimeCaching: [
         {

@@ -14,13 +14,7 @@ module.exports = {
     clean: true,
   },
   module: {
-    // rules: [
-    //   {
-    //     test: /\.(png|svg|webp|jpg|jpeg|gif)$/,
-    //     dependency: { not: ['url'] },
-    //     type: 'asset/resource',
-    //   },
-    // ],
+    rules: [],
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -34,9 +28,9 @@ module.exports = {
           to: path.resolve(__dirname, 'dist/'),
           globOptions: {
             ignore: [
-              '**/icon.*'
-            ]
-          }
+              '**/icon.*',
+            ],
+          },
         },
       ],
     }),
