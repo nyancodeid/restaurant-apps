@@ -2,6 +2,7 @@ class FooterSection extends HTMLElement {
   connectedCallback() {
     this.render();
   }
+
   render() {
     this.innerHTML = String.raw`
       <section class="footer_content">

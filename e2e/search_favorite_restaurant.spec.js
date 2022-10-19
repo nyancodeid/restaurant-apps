@@ -1,3 +1,5 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 const assert = require('assert');
 
 Feature('Search Favorite Restaurant');
@@ -7,15 +9,17 @@ Before(({ I }) => {
 });
 
 Scenario('Searching Restaurant', async ({ I }) => {
-  I.see("Whopss! it's look like you doesn't have any favorite restaurant.", '.restaurant__empty_result span');
+  I.see("Whopss! it's look like you doesn't have any favorite restaurant.", '.restaurant__empty_result > span');
 
   I.amOnPage('/');
 
+  I.waitForElement('.restaurant_item__title', 2);
   I.seeElement('.restaurant_item__title');
 
   const titles = [];
 
   for (let i = 1; i <= 3; i++) {
+    I.waitForElement('.restaurant_item__title', 2);
     I.click(locate('.restaurant_item__title').at(i));
     I.seeElement('#favorite-button');
     I.click('#favorite-button');
@@ -31,8 +35,8 @@ Scenario('Searching Restaurant', async ({ I }) => {
 
   I.fillField('#search-query', searchQuery);
 
-  const visibleLikedRestaurants = await I.grabNumberOfVisibleElements('.restaurant_item__title');
-  assert.strictEqual(matchingRestaurants.length, visibleLikedRestaurants);
+  const visibleFavoritedRestaurants = await I.grabNumberOfVisibleElements('.restaurant_item__title');
+  assert.strictEqual(matchingRestaurants.length, visibleFavoritedRestaurants);
 
   matchingRestaurants.forEach(async (title, index) => {
     const visibleTitle = await I.grabTextFrom(locate('.restaurant_item__title').at(index + 1));

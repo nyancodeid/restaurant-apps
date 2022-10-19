@@ -19,8 +19,10 @@ class SearchInitiator {
 
   search(callback) {
     this.onSearchCallback = (restaurants) => {
-      this._setRestaurantDisplayedCount(restaurants.length);
+      // eslint-disable-next-line no-restricted-globals
+      if (location.hash.includes('favorite')) return;
 
+      this._setRestaurantDisplayedCount(restaurants.length);
       callback(restaurants);
     };
 

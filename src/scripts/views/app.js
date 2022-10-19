@@ -53,9 +53,10 @@ class App {
     try {
       const page = await routes[url];
       main.innerHTML = await page.render();
-  
+
       await page.afterRender();
     } catch (err) {
+      console.error(err);
       main.innerHTML = this._renderErrorNotFound();
     }
   }
@@ -72,7 +73,7 @@ class App {
           </div>
         </div>
       </section>
-    `
+    `;
   }
 }
 

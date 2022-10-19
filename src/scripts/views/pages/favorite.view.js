@@ -17,7 +17,7 @@ class FavoriteRestaurants {
         <div class="wrapper_container">
           <div class="restaurant_header">
             <h2>Favorite Restaurants</h2>
-            <p>Lists of favorite restaurants.</p>
+            <p>Lists of your favorited restaurants.</p>
           </div>
 
           ${content}

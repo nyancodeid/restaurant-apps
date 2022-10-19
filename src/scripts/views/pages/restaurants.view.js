@@ -6,7 +6,7 @@ import { createRestaurantsLoadingTemplate } from '../templates/creator.template'
 class Restaurants {
   async render() {
     return String.raw`
-      <section class="restaurant">
+      <section class="restaurant restaurant-main">
         <div class="wrapper_container">
           <div class="restaurant_header">
             <h2>Explore Restaurant</h2>
@@ -34,11 +34,10 @@ class Restaurants {
 
     setActiveNavbar('home');
 
-    const container = document.querySelector('section.restaurant .restaurant_lists');
+    const container = document.querySelector('section.restaurant.restaurant-main .restaurant_lists');
     container.innerHTML = createRestaurantsLoadingTemplate();
 
     const restaurants = await RestaurantProvider.restaurants();
-
     const search = new SearchInitiator();
 
     search.init({

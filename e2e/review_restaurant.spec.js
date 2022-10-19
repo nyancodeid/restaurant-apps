@@ -9,9 +9,10 @@ Before(({ I }) => {
 Scenario('Submit a new restaurant review', async ({ I }) => {
   const review = {
     name: 'KalApps E2E Testing',
-    content: 'Ini review yang dibuat menggunakan E2E Testing'
+    content: 'Ini review yang dibuat menggunakan E2E Testing',
   };
 
+  I.waitForElement('.restaurant_item__title', 2);
   I.seeElement('.restaurant_item__title');
   I.click(locate('.restaurant_item__title').at(1));
 
@@ -22,7 +23,6 @@ Scenario('Submit a new restaurant review', async ({ I }) => {
 
   I.waitForResponse('https://restaurant-api.dicoding.dev/review');
 
-  const lastReview = locate('review-item').last();
   const lastReviewName = await I.grabTextFrom(locate('review-item .review__item_name').last());
   const lastReviewContent = await I.grabTextFrom(locate('review-item .review__item_content').last());
 
@@ -32,9 +32,10 @@ Scenario('Submit a new restaurant review', async ({ I }) => {
 
 Scenario('Submit a new restaurant review without review content filled', async ({ I }) => {
   const review = {
-    name: 'KalApps E2E Testing'
+    name: 'KalApps E2E Testing',
   };
 
+  I.waitForElement('.restaurant_item__title', 2);
   I.seeElement('.restaurant_item__title');
   I.click(locate('.restaurant_item__title').at(1));
 
